@@ -1,10 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://cimn3uq4u3uax"]
+[gd_scene load_steps=11 format=3 uid="uid://cimn3uq4u3uax"]
 
 [ext_resource type="Texture2D" uid="uid://cu71tdumphajo" path="res://Sprites/$ZeroSprites.png" id="1_q20st"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wjp4p"]
 radius = 12.0
 height = 38.0
+
+[sub_resource type="Animation" id="Animation_pq0q1"]
+resource_name = "ArmDamage"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [47, 48, 49, 50]
+}
 
 [sub_resource type="Animation" id="Animation_4bg83"]
 resource_name = "Idle"
@@ -38,25 +55,10 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_ixcvl"]
-resource_name = "Walk"
-length = 0.68
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-}
-
 [sub_resource type="Animation" id="Animation_6x8u4"]
 resource_name = "Sable"
 length = 0.55
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -70,12 +72,65 @@ tracks/0/keys = {
 "values": [24, 25, 26, 27, 28, 29, 30, 31]
 }
 
+[sub_resource type="Animation" id="Animation_ixcvl"]
+resource_name = "Walk"
+length = 0.68
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_dxtnx"]
+resource_name = "ZeroBlaster"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [32, 33, 34]
+}
+
+[sub_resource type="Animation" id="Animation_dw30k"]
+resource_name = "ZeroSalto"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00208332, 0.102083, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.897917, 0.997917, 1.09792),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qx8f7"]
 _data = {
+"ArmDamage": SubResource("Animation_pq0q1"),
 "Idle": SubResource("Animation_4bg83"),
 "RESET": SubResource("Animation_vf5na"),
 "Sable": SubResource("Animation_6x8u4"),
-"Walk": SubResource("Animation_ixcvl")
+"Walk": SubResource("Animation_ixcvl"),
+"ZeroBlaster": SubResource("Animation_dxtnx"),
+"ZeroSalto": SubResource("Animation_dw30k")
 }
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
